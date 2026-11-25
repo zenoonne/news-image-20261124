@@ -1,0 +1,4 @@
+# Byte-compiled caches only; entry.png is committed (main.ts copies it).
+__pycache__/
+*.pyc
+node_modules/
