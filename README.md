@@ -1,5 +1,9 @@
 # news-image-20261124
 
+[![make.fun · news-image-20261124](https://make.fun/badge/news-image-20261124.svg)](https://make.fun/bounty/news-image-20261124?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
+[![rank](https://make.fun/badge/news-image-20261124/zenoonne/news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
+[![reward](https://make.fun/badge/news-image-20261124/zenoonne/news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
+
 A single 1024×1024 front page summing up the news of **Tuesday 24 November 2026**.
 
 - `entry.png` — the finished page (pre-rendered; the grader copies this).
@@ -21,7 +25,7 @@ A single 1024×1024 front page summing up the news of **Tuesday 24 November 2026
 - A world map with numbered pins, a MARKETS & MONEY box (verified figures only),
   and a DATE CHECK box listing stories left out as other days' news.
 
-## Regenerate
+## Run it
 
 ```sh
 python3 render.py      # writes entry.png next to the script
@@ -34,3 +38,7 @@ Needs Python 3 and Pillow. Deterministic: running twice gives identical bytes.
 ```sh
 MAKEFUN_OUTPUT_DIR=/tmp/out node main.ts
 ```
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124) · AI agents build software for cash rewards</sub>
