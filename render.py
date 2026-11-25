@@ -61,6 +61,14 @@ def text(d, xy, s, f, fill=INK, anchor="la"):
     d.text(xy, s, font=f, fill=fill, anchor=anchor)
 
 
+def scene_label(d, x0, y0, label, fill, bg):
+    """Scene corner label on a clean patch of the scene background."""
+    f = font(FONT_B, 10)
+    tw = d.textlength(label, font=f)
+    d.rectangle((x0 + 2, y0 + 1, x0 + 2 + tw + 10, y0 + 18), fill=bg)
+    text(d, (x0 + 6, y0 + 5), label, f, fill)
+
+
 def wrap(d, s, f, maxw):
     words = s.split()
     lines, cur = [], ""
@@ -279,7 +287,7 @@ def scene_afcon(d, r):
     bx = x0 + w * 0.62
     by = y1 - h * 0.24
     d.ellipse((bx - 12, by - 12, bx + 12, by + 12), fill=(250, 250, 250), outline=(40, 40, 40))
-    text(d, (x0 + 6, y0 + 6), "CHAMPIONS", font(FONT_B, 10), (20, 90, 40))
+    scene_label(d, x0, y0, "CHAMPIONS", (20, 90, 40), (196, 226, 200))
 
 
 def scene_gaza(d, r):
@@ -299,7 +307,7 @@ def scene_gaza(d, r):
                   fill=(110, 108, 106))
     # flag (Palestinian)
     _mini_flag(d, x1 - 34, y0 + 6, 26, 17, [(20, 20, 20), (250, 250, 250), (30, 130, 60)])
-    text(d, (x0 + 6, y0 + 6), "GAZA", font(FONT_B, 10), (60, 40, 20))
+    scene_label(d, x0, y0, "GAZA", (60, 40, 20), (214, 196, 160))
 
 
 def scene_bangladesh(d, r):
@@ -319,7 +327,7 @@ def scene_bangladesh(d, r):
         d.rectangle((px - 6, py - 16, px + 6, py + 6), fill=(60, 90, 140))
         d.line((px - 6, py - 12, px - 12, py - 26), fill=(60, 90, 140), width=3)
         d.line((px + 6, py - 12, px + 12, py - 26), fill=(60, 90, 140), width=3)
-    text(d, (x0 + 6, y0 + 6), "DHAKA", font(FONT_B, 10), (60, 40, 20))
+    scene_label(d, x0, y0, "DHAKA", (60, 40, 20), (222, 214, 190))
 
 
 def scene_hasina(d, r):
@@ -337,7 +345,7 @@ def scene_hasina(d, r):
     # Bangladesh flag
     d.rectangle((x1 - 34, y0 + 6, x1 - 6, y0 + 26), fill=(0, 106, 78))
     d.ellipse((x1 - 24, y0 + 11, x1 - 14, y0 + 21), fill=(244, 60, 60))
-    text(d, (x0 + 6, y0 + 6), "HOME", font(FONT_B, 10), (20, 40, 70))
+    scene_label(d, x0, y0, "HOME", (20, 40, 70), (180, 208, 232))
 
 
 def scene_cartagena(d, r):
@@ -356,7 +364,7 @@ def scene_cartagena(d, r):
         py = y1 - h * 0.1
         d.ellipse((px - 6, py - 28, px + 6, py - 16), fill=(236, 200, 160))
         d.rectangle((px - 7, py - 16, px + 7, py + 8), fill=col)
-    text(d, (x0 + 6, y0 + 4), "CARTAGENA", font(FONT_B, 10), (60, 40, 20))
+    scene_label(d, x0, y0, "CARTAGENA", (60, 40, 20), (240, 226, 190))
 
 
 def scene_femicide(d, r):
@@ -376,7 +384,7 @@ def scene_femicide(d, r):
     d.ellipse((px - 8, py - 30, px + 8, py - 14), fill=(238, 206, 168))
     d.polygon([(px - 12, py - 14), (px + 12, py - 14), (px + 10, py + 20), (px - 10, py + 20)], fill=(240, 240, 240))
     d.line((px + 10, py - 10, px + 24, py - 30), fill=(240, 240, 240), width=4)
-    text(d, (x0 + 6, y0 + 6), "1 EVERY 10 MIN", font(FONT_B, 10), (255, 210, 120))
+    scene_label(d, x0, y0, "1 EVERY 10 MIN", (255, 210, 120), (38, 44, 74))
 
 
 def scene_ukheat(d, r):
@@ -396,7 +404,7 @@ def scene_ukheat(d, r):
     d.rectangle((tx - 5, y0 + h * 0.2, tx + 5, y0 + h * 0.72), fill=(240, 240, 240), outline=(80, 80, 80))
     d.ellipse((tx - 10, y0 + h * 0.7, tx + 10, y0 + h * 0.9), fill=(220, 60, 60))
     d.rectangle((tx - 3, y0 + h * 0.34, tx + 3, y0 + h * 0.72), fill=(220, 60, 60))
-    text(d, (x0 + 6, y0 + 6), "5,258 DEATHS", font(FONT_B, 10), (120, 40, 20))
+    scene_label(d, x0, y0, "5,258 DEATHS", (120, 40, 20), (236, 176, 96))
 
 
 def scene_chess(d, r):
@@ -421,7 +429,7 @@ def scene_chess(d, r):
     # pawn
     d.ellipse((bx0 + (bx1 - bx0) * 0.25 - 5, by0 + (by1 - by0) * 0.66 - 8,
                bx0 + (bx1 - bx0) * 0.25 + 5, by0 + (by1 - by0) * 0.66 + 6), fill=(30, 30, 30))
-    text(d, (x0 + 6, y0 + 4), "CHESS G1", font(FONT_B, 10), (240, 220, 180))
+    scene_label(d, x0, y0, "GAME 1", (240, 220, 180), (60, 54, 46))
 
 
 def scene_helicopter(d, r):
@@ -441,7 +449,7 @@ def scene_helicopter(d, r):
         d.ellipse((x0 + w * 0.2 + k * 5, y1 - h * 0.28 - k * 5, x0 + w * 0.2 + k * 5 + rad, y1 - h * 0.28 - k * 5 + rad),
                   fill=(90, 88, 86))
     _mini_flag(d, x1 - 30, y0 + 6, 22, 14, [(220, 40, 40), (250, 250, 250)])
-    text(d, (x0 + 6, y0 + 6), "TÜRKIYE", font(FONT_B, 10), (40, 40, 60))
+    scene_label(d, x0, y0, "TÜRKIYE", (40, 40, 60), (170, 188, 206))
 
 
 def scene_huawei(d, r):
@@ -464,7 +472,7 @@ def scene_huawei(d, r):
     d.rectangle((gx - 16, gy - 6, gx + 16, gy + 6), fill=(120, 80, 40))
     d.rectangle((gx - 4, gy + 4, gx + 4, gy + 26), fill=(120, 80, 40))
     _mini_flag(d, x1 - 30, y0 + 6, 22, 14, [(200, 40, 40), (250, 250, 250), (40, 60, 160)])
-    text(d, (x0 + 6, y0 + 6), "GUILTY", font(FONT_B, 10), (140, 30, 30))
+    scene_label(d, x0, y0, "GUILTY", (140, 30, 30), (226, 226, 232))
 
 
 # ----------------------------------------------------------------------------
@@ -492,82 +500,82 @@ BIG = [
 
 MEDIUM = [
     dict(n=4, region=AF, tag="REPORTED", scene=scene_afcon,
-         loc="LAUSANNE, SWITZERLAND",
+         loc="LAUSANNE",
          head="Senegal reinstated as Africa Cup champions",
-         sub="CAS backs the 1-0 final win over Morocco. (AP / The Guardian)"),
+         sub="CAS backs the 1-0 final win over Morocco. (AP)"),
     dict(n=5, region=ME, tag="REPORTED", scene=scene_gaza,
          loc="GAZA STRIP",
          head="Israel kills Hamas security chief in strike",
          sub="Naeem Abu Nahel dies in a Gaza air raid. (The Washington Post)"),
     dict(n=6, region=AS, tag="REPORTED", scene=scene_bangladesh,
-         loc="DHAKA, BANGLADESH",
+         loc="DHAKA",
          head="Tear gas fired at garment protests",
-         sub="Pay dispute halts work at 481 factories. (The Business Standard)"),
+         sub="Pay dispute halts work at 481 factories. (Business Standard)"),
     dict(n=7, region=AS, tag="REPORTED", scene=scene_hasina,
          loc="DHAKA, BANGLADESH",
          head="Hasina says she will return home",
          sub="Ex-PM plans to fly back on 16 December. (Reuters)"),
     dict(n=8, region=AM, tag="REPORTED", scene=scene_cartagena,
-         loc="CARTAGENA, COLOMBIA",
+         loc="CARTAGENA",
          head="Hostages held in supermarket standoff",
-         sub="Armed men flee botched robbery, seize captives. (Al Jazeera)"),
+         sub="Armed men flee botched robbery. (Al Jazeera)"),
     dict(n=9, region=WO, tag="REPORTED", scene=scene_femicide,
          loc="UNITED NATIONS",
          head="UN: a woman killed every 10 minutes",
-         sub="5 an hour died at the hands of partners or relatives in 2025. (UN Women)"),
+         sub="5 an hour died at partners' or relatives' hands in 2025."),
     dict(n=10, region=EU, tag="REPORTED", scene=scene_ukheat,
          loc="UNITED KINGDOM",
          head="UK records its worst year for heat deaths",
-         sub="5,258 heat-related deaths in 2026 set a record. (Reuters / UKHSA)"),
+         sub="5,258 heat-related deaths in 2026 set a record. (Reuters)"),
     dict(n=11, region=EU, tag="REPORTED", scene=scene_chess,
-         loc="GENEVA, SWITZERLAND",
+         loc="GENEVA",
          head="Chess title match opens with a draw",
-         sub="Gukesh and Sindarov draw the 38-move opener. (The Guardian)"),
+         sub="Gukesh and Sindarov draw the 38-move opener. (Guardian)"),
     dict(n=12, region=ME, tag="REPORTED", scene=scene_helicopter,
          loc="ESKIŞEHIR, TÜRKIYE",
          head="Air force helicopter crash kills five",
          sub="Training flight comes down in central Türkiye. (AP)"),
     dict(n=13, region=AS, tag="REPORTED", scene=scene_huawei,
-         loc="NEW YORK, UNITED STATES",
+         loc="NEW YORK",
          head="Huawei guilty of stealing trade secrets",
-         sub="Jury acquits it of racketeering in a US trial. (AP / Reuters)"),
+         sub="Jury acquits it of racketeering in a US trial. (AP)"),
 ]
 
 ALSO = [
-    "Putin vows 'inevitable' reply to oil strikes (RUSSIA)",
+    "Putin vows reply to oil strikes (RUSSIA)",
     "Ukraine hits Russian ships off Libya (LIBYA)",
     "Haftar visits Türkiye after ship attacks (LIBYA)",
-    "South Africa jails Zimbabwean over Russia war (SA)",
+    "S. Africa jails Zimbabwean over war (SA)",
     "China Southern to buy 50 Boeing jets (CHINA)",
-    "Compass to quit London listing for New York (UK)",
+    "Compass to quit London listing (UK)",
     "EU to cap Chinese hybrid-EV imports (EU)",
     "Leak: 300+ Russians killed in Mali (MALI)",
-    "Cameroon separatist denies war crimes (NORWAY)",
-    "Landmine casualties hit five-year high (GLOBAL)",
-    "Rebels retreat in DR Congo after clashes (DR CONGO)",
-    "China sentences official Ma to death for spying (CHINA)",
-    "Malaysia to send migrants back to Myanmar (MALAYSIA)",
-    "'We do not report to the US', Canada tells Pentagon",
-    "Trump gives Giuliani the Medal of Freedom (US)",
-    "Democrat Broderick flips a Tennessee seat (US)",
-    "Sooryavanshi smashes 204 off 53 balls (CRICKET)",
-    "Sinner has knee surgery; Open in doubt (TENNIS)",
-    "Virginia enshrines voting and marriage rights (US)",
-    "Gaza meningitis epidemic alert as cases rise (GAZA)",
+    "Cameroon separatist denies crimes (NORWAY)",
+    "Landmine casualties hit 5-year high (GLOBAL)",
+    "Rebels retreat in DR Congo (DR CONGO)",
+    "China sentences official Ma to death (CHINA)",
+    "Malaysia to return migrants to Myanmar",
+    "Canada: 'We do not report to the US'",
+    "Trump awards Giuliani Medal of Freedom (US)",
+    "Democrat flips a Tennessee seat (US)",
+    "Sooryavanshi smashes 204 off 53 (CRICKET)",
+    "Sinner has knee surgery (TENNIS)",
+    "Virginia enshrines vote, marriage rights (US)",
+    "Gaza meningitis alert as cases rise (GAZA)",
 ]
 
 EXCLUDED = [
-    ("Jensen Huang reinstated as Nvidia CEO", "Mon 23 Nov"),
+    ("Huang reinstated as Nvidia CEO", "Mon 23 Nov"),
     ("US blacklists AI firm Megaspeed", "Mon 23 Nov"),
     ("Ukraine strikes Perm refinery", "Mon 23 Nov"),
     ("Car bomb, Villavicencio, Colombia", "Mon 23 Nov"),
-    ("Mexico: 16 killed, 'El Chapo Isidro' held", "Mon 23 Nov"),
+    ("Mexico: 16 killed, 'El Chapo' held", "23 Nov"),
     ("GTA VI: $3.79bn first-day sales", "Fri 20 Nov"),
     ("Anthropic's record Nasdaq IPO", "Thu 19 Nov"),
     ("Court clears US Army Iowa blast", "Mon 23 Nov"),
     ("Trump urges faster executions", "Mon 23 Nov"),
     ("Sydney double-murder verdict", "Wed 25 Nov"),
-    ("Saudi coalition bombs Hodeidah port", "Wed 25 Nov"),
+    ("Saudi coalition bombs Hodeidah", "Wed 25 Nov"),
 ]
 
 MARKETS = [
@@ -680,11 +688,15 @@ def draw_map(d, r, num_font):
         pts = [project(lon, lat) for lon, lat in poly]
         d.polygon(pts, fill=(196, 208, 186), outline=(120, 140, 130))
     col, _ = REGION[EU]
+    # pins that would sit on top of each other get a small nudge
+    NUDGE = {11: (-15, 11), 13: (0, 13), 7: (13, -9)}
     for n, (lon, lat) in PINS.items():
         px, py = project(lon, lat)
+        dx, dy = NUDGE.get(n, (0, 0))
+        px, py = px + dx, py + dy
         reg = BIG[n - 1]["region"] if n <= 3 else MEDIUM[n - 4]["region"]
         c = REGION[reg][0]
-        d.ellipse((px - 7, py - 7, px + 7, py + 7), fill=c, outline=(255, 255, 255))
+        d.ellipse((px - 5, py - 5, px + 5, py + 5), fill=c, outline=(255, 255, 255))
         text(d, (px, py - 1), str(n), num_font, (255, 255, 255), anchor="mm")
 
 
